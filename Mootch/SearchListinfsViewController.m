@@ -142,7 +142,7 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
     //}
     return cell;
 }
-
+//First dictResult corresponds to the actual deserialized JSON object representing one listing returned from the php backend
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dictResult = [self.arrSearchResults objectAtIndex:indexPath.row];
