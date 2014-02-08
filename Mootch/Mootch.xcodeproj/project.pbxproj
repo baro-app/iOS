@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A865D1018A582930085F1EC /* ListingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A865D0F18A582930085F1EC /* ListingTableViewCell.m */; };
 		7D454D6C187A08A700937AEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D454D6B187A08A700937AEF /* Foundation.framework */; };
 		7D454D6E187A08A700937AEF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D454D6D187A08A700937AEF /* CoreGraphics.framework */; };
 		7D454D70187A08A700937AEF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D454D6F187A08A700937AEF /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A865D0E18A582930085F1EC /* ListingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListingTableViewCell.h; sourceTree = "<group>"; };
+		6A865D0F18A582930085F1EC /* ListingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListingTableViewCell.m; sourceTree = "<group>"; };
 		7D454D68187A08A700937AEF /* Mootch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mootch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D454D6B187A08A700937AEF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7D454D6D187A08A700937AEF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -214,6 +217,8 @@
 				7D90C0D8187CD6140032D012 /* RoleViewController.m */,
 				7D90C0DA187CE9D70032D012 /* SearchListingsViewController.h */,
 				7D90C0DB187CE9D70032D012 /* SearchListingsViewController.m */,
+				6A865D0E18A582930085F1EC /* ListingTableViewCell.h */,
+				6A865D0F18A582930085F1EC /* ListingTableViewCell.m */,
 				7D90C0DD187CE9EE0032D012 /* NewListingViewController.h */,
 				7D90C0DE187CE9EE0032D012 /* NewListingViewController.m */,
 				7DFFF282187F6571002C9CDE /* MenuViewController.h */,
@@ -377,6 +382,7 @@
 				7DFFF273187E4225002C9CDE /* SDWebImageDownloader.m in Sources */,
 				7DFFF277187E4225002C9CDE /* UIButton+WebCache.m in Sources */,
 				7D90C0DC187CE9D70032D012 /* SearchListingsViewController.m in Sources */,
+				6A865D1018A582930085F1EC /* ListingTableViewCell.m in Sources */,
 				7D454D78187A08A700937AEF /* main.m in Sources */,
 				7DFFF281187E43B1002C9CDE /* NSData+ImageContentType.m in Sources */,
 				7DFFF26F187E4225002C9CDE /* MKAnnotationView+WebCache.m in Sources */,

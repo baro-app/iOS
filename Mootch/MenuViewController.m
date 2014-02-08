@@ -65,9 +65,10 @@ static NSString * const kMenuTableViewCellIdentifier = @"com.flykit.menuViewCell
     return 5;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tview cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [tableView dequeueReusableCellWithIdentifier:kMenuTableViewCellIdentifier forIndexPath:indexPath];
+    return [tview dequeueReusableCellWithIdentifier:kMenuTableViewCellIdentifier forIndexPath:indexPath];//Changed this from tableView to tview
+    //so there's no conflict with the tableView instance variable
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
