@@ -72,7 +72,7 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
 - (void)updateSearch:(BOOL)update {
     NSOperationQueue *mainQueue = [[NSOperationQueue alloc] init];
     [mainQueue setMaxConcurrentOperationCount:5];
-    NSURL *apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://dev.api.mootch.it/listings/search/%@",self.searchBar.text]];
+    NSURL *apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://dev.api.mootch.it/listings/search/%@",[self.searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:apiUrl];
     [NSURLConnection sendAsynchronousRequest:request queue:mainQueue completionHandler:^(NSURLResponse *response, NSData *responseData, NSError *error) {
         if(!error) {
