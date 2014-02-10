@@ -9,6 +9,7 @@
 #import "SearchListingsViewController.h"
 #import "TWTSideMenuViewController.h"
 #import "UIImageView+WebCache.h"
+#import "ListingTableViewCell.h"
 
 @interface SearchListingsViewController ()
 
@@ -52,7 +53,7 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
                                                object:nil];
     
     self.searchResults = [[UITableView alloc] initWithFrame:CGRectMake(0.0f,0.0f,320.0f,480.0f) style:UITableViewStylePlain];
-    [self.searchResults registerClass:[UITableViewCell class] forCellReuseIdentifier:kNewSearchCellIdentifier];
+    [self.searchResults registerClass:[ListingTableViewCell class] forCellReuseIdentifier:kNewSearchCellIdentifier];
     self.searchResults.delegate = self;
     self.searchResults.dataSource = self;
     self.searchResults.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -134,9 +135,9 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
     return [self.arrSearchResults count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (ListingTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNewSearchCellIdentifier forIndexPath:indexPath];
+    ListingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNewSearchCellIdentifier forIndexPath:indexPath];
     //if(cell == nil) {
     //    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kNewSearchCellIdentifier];
     //}
