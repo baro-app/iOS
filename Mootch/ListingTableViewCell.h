@@ -18,7 +18,7 @@
 @property (weak, nonatomic) NSString *listingTitle;
 @property (weak, nonatomic) NSString *listingDescription;
 @property (weak, nonatomic) UIImage *listingImage;
-@property (weak, nonatomic) NSDictionary *listingTags;
+@property (weak, nonatomic) NSArray *listingTags;
 @property (nonatomic) float listingRate;
 /*
  Following are geographic properties of the listing. City and state dummies for now,

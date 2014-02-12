@@ -24,7 +24,7 @@
     }
     return self;
 }
-- (id) initWithListingTitle:(NSString *)title description:(NSString *)description image:(UIImage *)image tags:(NSDictionary *)tags rate:(float)rate
+- (id) initWithListingTitle:(NSString *)title description:(NSString *)description image:(UIImage *)image tags:(NSArray *)tags rate:(float)rate
 {
     if(self = [super init]) {
         self.listingTitle = title;
