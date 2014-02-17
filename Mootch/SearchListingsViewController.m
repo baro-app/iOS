@@ -141,19 +141,18 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
     //if(cell == nil) {
     //    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kNewSearchCellIdentifier];
     //}
-    return cell;
-}
-//First dictResult corresponds to the actual deserialized JSON object representing one listing returned from the php backend
-- (void)tableView:(UITableView *)tableView willDisplayCell:(ListingTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
     NSDictionary *dictResult = [self.arrSearchResults objectAtIndex:indexPath.row];
     ListingTableViewCell *newCell = [[ListingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNewSearchCellIdentifier];
     [newCell setCellValues:dictResult];
     NSLog(newCell.listingDescription.text);
     NSLog(newCell.listingTitle.text);
     NSLog(newCell.listingTags.text);
-
-    cell = newCell;
+    
+    return newCell;
+}
+//First dictResult corresponds to the actual deserialized JSON object representing one listing returned from the php backend
+- (void)tableView:(UITableView *)tableView willDisplayCell:(ListingTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
 }
 

@@ -66,6 +66,7 @@
     [self.contentView addSubview:self.listingDescription];
     [self.contentView addSubview:self.listingTags];
     
+    
     UIButton *btnBook = [[UIButton alloc] initWithFrame:CGRectMake(144.0f,20.0f,76.0f,20.0f)];
     [btnBook setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [btnBook setTitle:@"Book" forState:UIControlStateNormal];
