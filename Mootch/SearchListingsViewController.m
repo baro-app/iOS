@@ -144,32 +144,17 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
     return cell;
 }
 //First dictResult corresponds to the actual deserialized JSON object representing one listing returned from the php backend
-- (void)tableView:(UITableView *)tableView willDisplayCell:(ListingTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView willDisplayCell:(ListingTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *dictResult = [self.arrSearchResults objectAtIndex:indexPath.row];
-    NSString *listingTitle= [dictResult objectForKey:@"title"];
-    NSString *listingImageURL= [[[dictResult objectForKey:@"images"] objectAtIndex:0] objectForKey:@"image_src"];
-    NSString *listingDescription = [dictResult objectForKey:@"description"];
-    NSArray *listingTags = [dictResult objectForKey:@"tags"];
-    float listingRate = [[dictResult objectForKey:@"rate"] floatValue];
-    
-    cell.listingTitle = listingTitle;
-    cell.listingDescription = listingDescription;
-//    cell.listingImage = listingImageURL;
-    cell.listingTags = listingTags;
-    cell.listingRate = listingRate;
-    cell.listingCity = @"Minneapolis";
-    cell.listingState = @"Minnesota";
-    [cell.imageView setImageWithURL:[NSURL URLWithString:listingImageURL]];
-    [cell.textLabel setText:cell.listingTitle];
-    [cell.detailTextLabel setText:cell.listingDescription];
-    
+    ListingTableViewCell *newCell = [[ListingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNewSearchCellIdentifier];
+    [newCell setCellValues:dictResult];
+    NSLog(newCell.listingDescription.text);
+    NSLog(newCell.listingTitle.text);
+    NSLog(newCell.listingTags.text);
 
-    UIButton *btnBook = [[UIButton alloc] initWithFrame:CGRectMake(0.0f,0.0f,80.0f,20.0f)];
-
-    [btnBook setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [btnBook setTitle:@"Book" forState:UIControlStateNormal];
-    cell.accessoryView = btnBook;
+    cell = newCell;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

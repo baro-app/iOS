@@ -15,10 +15,10 @@
  their listings? In which case they would need to be mutable/we would need to manually
  handle their copying.
  */
-@property (weak, nonatomic) NSString *listingTitle;
-@property (weak, nonatomic) NSString *listingDescription;
-@property (weak, nonatomic) UIImage *listingImage;
-@property (weak, nonatomic) NSArray *listingTags;
+@property (strong, nonatomic) UILabel *listingTitle;
+@property (strong, nonatomic) UILabel *listingDescription;
+@property (strong, nonatomic) UIImageView *listingImage;
+@property (strong, nonatomic) UILabel *listingTags;
 @property (nonatomic) float listingRate;
 /*
  Following are geographic properties of the listing. City and state dummies for now,
@@ -28,6 +28,7 @@
 @property (weak, nonatomic) NSString *listingState;
 //@property (weak, nonatomic) CLLocationCoordinate2D *listingLocation;
 
+-(void)setCellValues:(NSDictionary *)dictionary;
 
 
 @end
