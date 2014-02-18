@@ -24,11 +24,33 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.listingTitle = [[UILabel alloc] init];
-        self.listingDescription= [[UILabel alloc] init];
-        self.listingTags = [[UILabel alloc] init];
-        self.listingImage = [[UIImageView alloc] init];
         
+        self.listingImage = [[UIImageView alloc] init];
+        [self.listingImage setFrame:CGRectMake(5.0f,5.0f, 45.0f, 55.0f)];
+        [self addSubview:self.listingImage];
+
+        self.listingTitle = [[UILabel alloc] init];
+        [self.listingTitle setFrame:CGRectMake(65.0f, 5.0f, 240.0f, 18.0f)];
+        [self.listingTitle setFont:[UIFont systemFontOfSize:18.0f]];
+        [self addSubview:self.listingTitle];
+        
+        
+        self.listingTags = [[UILabel alloc] init];
+        [self.listingTags setFrame:CGRectMake(65.0f, 28.0f, 240.0f, 18.0f)];
+        [self.listingTags setFont:[UIFont systemFontOfSize:10.0f]];
+        [self addSubview:self.listingTags];
+        
+        self.listingRate = [[UILabel alloc] init];
+        [self.listingRate setFrame:CGRectMake(65.0f, 51.0f, 112.5f, 18.0f)];
+        [self addSubview:self.listingRate];
+        
+        
+        UIButton *btnBook = [[UIButton alloc] initWithFrame:CGRectMake(192.5f,51.0f,112.5f,18.0f)];
+        [btnBook setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [btnBook setTitle:@"Book" forState:UIControlStateNormal];
+        [[btnBook layer] setBorderWidth:1.0f];
+        [[btnBook layer] setBorderColor:[UIColor grayColor].CGColor];
+        [self addSubview:btnBook];
     }
     return self;
 }
@@ -46,40 +68,26 @@
     NSString *titleString = [dictionary objectForKey:@"title"];
     [self.listingTitle setText:titleString];
     [self.listingDescription setText:[dictionary objectForKey:@"description"]];
+    
     NSString *imageURLString = [[[dictionary objectForKey:@"images"] objectAtIndex:0] objectForKey:@"image_src"];
     NSURL *imageURL = [[NSURL alloc] initWithString:imageURLString];
-    NSData *rawImageData = [NSData dataWithContentsOfURL:imageURL];
-    UIImage *listingImage = [UIImage imageWithData:rawImageData];
-    self.imageView.image = listingImage;
+    NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
+    UIImage *image = [UIImage imageWithData:imageData];
+    [self.listingImage setImage:image];
+
+     
     NSArray *tagArray = [dictionary objectForKey:@"tags"];
     NSMutableString *tagString = [[NSMutableString alloc] initWithString:@"Tags: "];
     for(int i = 0; i < tagArray.count; i++){
         [tagString appendString:[tagArray[i] objectForKey:@"tag"]];
         [tagString appendString:@" "];
     }
-    self.listingTags.text = tagString;
-    self.listingRate = [[dictionary objectForKey:@"rate"] floatValue];
-    [self.imageView setFrame:CGRectMake(0,0, 44.0f, 44.0f)];
-    [self.imageView setImage:self.listingImage.image];
-    [self.contentView setFrame:CGRectMake(44.0f, 0.0f, 200.0f, 44.0f)];
-    [self.contentView addSubview:self.listingTitle];
-    [self.contentView addSubview:self.listingDescription];
-    [self.contentView addSubview:self.listingTags];
+    [self.listingTags setText:tagString];
     
+    float rateFloat = [[dictionary objectForKey:@"rate"] floatValue];
+    rateFloat = rateFloat/100.0f;
     
-    UIButton *btnBook = [[UIButton alloc] initWithFrame:CGRectMake(144.0f,20.0f,76.0f,20.0f)];
-    [btnBook setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [btnBook setTitle:@"Book" forState:UIControlStateNormal];
-    
-    NSLog(self.listingDescription.text);
-    NSLog(self.listingTitle.text);
-    NSLog(self.listingTags.text);
-
-    
-    [self.accessoryView addSubview:btnBook];
-    
-    
-    
+    [self.listingRate setText:[NSString stringWithFormat:@"%d",(int)rateFloat]];
 }
 
 @end

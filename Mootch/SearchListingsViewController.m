@@ -54,6 +54,8 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
     
     self.searchResults = [[UITableView alloc] initWithFrame:CGRectMake(0.0f,0.0f,320.0f,480.0f) style:UITableViewStylePlain];
     [self.searchResults registerClass:[ListingTableViewCell class] forCellReuseIdentifier:kNewSearchCellIdentifier];
+    [self.searchResults setRowHeight:75.0f];
+    
     self.searchResults.delegate = self;
     self.searchResults.dataSource = self;
     self.searchResults.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -125,9 +127,9 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
         self.searchResults.scrollIndicatorInsets = UIEdgeInsetsMake(65, 0.0, 0, 0.0);
     }];
 }
-
+#pragma UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0f;
+    return 75.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -137,19 +139,23 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
 
 - (ListingTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ListingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNewSearchCellIdentifier forIndexPath:indexPath];
-    //if(cell == nil) {
-    //    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kNewSearchCellIdentifier];
-    //}
+ //   ListingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNewSearchCellIdentifier forIndexPath:indexPath];
+ //   if(cell == nil) {
+ //       cell = [[ListingTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kNewSearchCellIdentifier];
+ //   }
+    
     NSDictionary *dictResult = [self.arrSearchResults objectAtIndex:indexPath.row];
-    ListingTableViewCell *newCell = [[ListingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNewSearchCellIdentifier];
+    ListingTableViewCell *newCell = (ListingTableViewCell*)[tableView dequeueReusableCellWithIdentifier:kNewSearchCellIdentifier forIndexPath:indexPath];
+    if(newCell == nil) {
+        newCell = [[ListingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNewSearchCellIdentifier];
+    }
     [newCell setCellValues:dictResult];
-    NSLog(newCell.listingDescription.text);
-    NSLog(newCell.listingTitle.text);
-    NSLog(newCell.listingTags.text);
     
     return newCell;
 }
+
+
+#pragma UITableViewDelegate
 //First dictResult corresponds to the actual deserialized JSON object representing one listing returned from the php backend
 - (void)tableView:(UITableView *)tableView willDisplayCell:(ListingTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -19,7 +19,7 @@
 @property (strong, nonatomic) UILabel *listingDescription;
 @property (strong, nonatomic) UIImageView *listingImage;
 @property (strong, nonatomic) UILabel *listingTags;
-@property (nonatomic) float listingRate;
+@property (strong, nonatomic) UILabel *listingRate;
 /*
  Following are geographic properties of the listing. City and state dummies for now,
  But Core Location data types will be better eventually for real lat-long locations
