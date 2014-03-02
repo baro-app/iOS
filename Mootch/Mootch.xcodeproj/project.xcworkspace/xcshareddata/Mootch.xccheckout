@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>736AC5D4-0BEB-467B-99D4-A546BA7CF58B</string>
+	<string>EB67EF01-FC0D-4FF8-B85D-58CEE46E1F51</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Mootch</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>FB13577E-18CA-4F3C-B8C3-FDEF2612BF9B</key>
-		<string>https://github.com/mootch/iOS.git</string>
+		<key>C3B7DCB7-64E3-4DC5-8D88-627826C0316A</key>
+		<string>https://github.com/mootch/iOS</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Mootch/Mootch.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>FB13577E-18CA-4F3C-B8C3-FDEF2612BF9B</key>
+		<key>C3B7DCB7-64E3-4DC5-8D88-627826C0316A</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/mootch/iOS.git</string>
+	<string>https://github.com/mootch/iOS</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>FB13577E-18CA-4F3C-B8C3-FDEF2612BF9B</string>
+	<string>C3B7DCB7-64E3-4DC5-8D88-627826C0316A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>FB13577E-18CA-4F3C-B8C3-FDEF2612BF9B</string>
+			<string>C3B7DCB7-64E3-4DC5-8D88-627826C0316A</string>
 			<key>IDESourceControlWCCName</key>
-			<string>iOS</string>
+			<string>Mootch</string>
 		</dict>
 	</array>
 </dict>

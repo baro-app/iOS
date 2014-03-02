@@ -1,16 +1,17 @@
 //
-//  SearchListinfsViewController.m
+//  SearchListingsViewController.m
 //  Mootch
 //
 //  Created by Garcia, Fabio (HBO-NS) on 1/7/14.
 //  Copyright (c) 2014 Garcia, Fabio (HBO-NS). All rights reserved.
 //
 
-#import "SearchListinfsViewController.h"
+#import "SearchListingsViewController.h"
 #import "TWTSideMenuViewController.h"
 #import "UIImageView+WebCache.h"
+#import "ListingTableViewCell.h"
 
-@interface SearchListinfsViewController ()
+@interface SearchListingsViewController ()
 
 @property NSMutableArray *arrSearchResults;
 @property UITableView *searchResults;
@@ -20,7 +21,7 @@
 
 static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
 
-@implementation SearchListinfsViewController
+@implementation SearchListingsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,7 +53,7 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
                                                object:nil];
     
     self.searchResults = [[UITableView alloc] initWithFrame:CGRectMake(0.0f,0.0f,320.0f,480.0f) style:UITableViewStylePlain];
-    [self.searchResults registerClass:[UITableViewCell class] forCellReuseIdentifier:kNewSearchCellIdentifier];
+    [self.searchResults registerClass:[ListingTableViewCell class] forCellReuseIdentifier:kNewSearchCellIdentifier];
     self.searchResults.delegate = self;
     self.searchResults.dataSource = self;
     self.searchResults.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -72,7 +73,7 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
 - (void)updateSearch:(BOOL)update {
     NSOperationQueue *mainQueue = [[NSOperationQueue alloc] init];
     [mainQueue setMaxConcurrentOperationCount:5];
-    NSURL *apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://dev.api.mootch.it/listings/search/%@",[self.searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]];
+    NSURL *apiUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://dev.api.mootch.it/listings/search/%@",self.searchBar.text]];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:apiUrl];
     [NSURLConnection sendAsynchronousRequest:request queue:mainQueue completionHandler:^(NSURLResponse *response, NSData *responseData, NSError *error) {
         if(!error) {
@@ -134,27 +135,24 @@ static NSString * const kNewSearchCellIdentifier = @"com.flykit.newSearchCell";
     return [self.arrSearchResults count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (ListingTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNewSearchCellIdentifier forIndexPath:indexPath];
+    ListingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNewSearchCellIdentifier forIndexPath:indexPath];
     //if(cell == nil) {
     //    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:kNewSearchCellIdentifier];
     //}
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
     NSDictionary *dictResult = [self.arrSearchResults objectAtIndex:indexPath.row];
-    cell.textLabel.text = [dictResult objectForKey:@"title"];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:[[[dictResult objectForKey:@"images"] objectAtIndex:0] objectForKey:@"image_src"]]
-                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    cell.detailTextLabel.text = @"Something";
+    ListingTableViewCell *newCell = [[ListingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kNewSearchCellIdentifier];
+    [newCell setCellValues:dictResult];
+    NSLog(newCell.listingDescription.text);
+    NSLog(newCell.listingTitle.text);
+    NSLog(newCell.listingTags.text);
     
-    UIButton *btnBook = [[UIButton alloc] initWithFrame:CGRectMake(0.0f,0.0f,80.0f,20.0f)];
-    [btnBook setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [btnBook setTitle:@"Book" forState:UIControlStateNormal];
-    cell.accessoryView = btnBook;
+    return newCell;
+}
+//First dictResult corresponds to the actual deserialized JSON object representing one listing returned from the php backend
+- (void)tableView:(UITableView *)tableView willDisplayCell:(ListingTableViewCell *) cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
 }
 
