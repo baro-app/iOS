@@ -23,6 +23,10 @@ static NSString * const kMenuTableViewCellIdentifier = @"com.flykit.menuViewCell
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        if(!self.searchListingViewController) {
+            SearchListingsViewController *newSearchListingViewController = [[SearchListingsViewController alloc] init];
+            self.searchListingViewController = newSearchListingViewController;
+        }
         // Custom initialization
     }
     return self;
@@ -67,8 +71,7 @@ static NSString * const kMenuTableViewCellIdentifier = @"com.flykit.menuViewCell
 
 - (UITableViewCell *)tableView:(UITableView *)tview cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [tview dequeueReusableCellWithIdentifier:kMenuTableViewCellIdentifier forIndexPath:indexPath];//Changed this from tableView to tview
-    //so there's no conflict with the tableView instance variable
+    return [tview dequeueReusableCellWithIdentifier:kMenuTableViewCellIdentifier forIndexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,6 +94,24 @@ static NSString * const kMenuTableViewCellIdentifier = @"com.flykit.menuViewCell
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    int index = indexPath.row;
+    if(index == 0) {
+        [self  ]
+    }
+    else if(index == 1) {
+        
+    }
+    else if(index == 2) {
+        
+    }
+    else if(index == 3) {
+        
+    }
+    else if(index == 4) {
+        
+    }
+    
 }
 
 @end

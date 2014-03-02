@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SearchListingsViewController.h"
+
 
 @interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) SearchListingsViewController *searchListingViewController;
 
 @end
